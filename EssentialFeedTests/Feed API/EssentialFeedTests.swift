@@ -85,7 +85,7 @@ class RemoteFeedLoaderTest: XCTestCase {
                              description: "A description",
                              location: "A location",
                              imageURL: URL(string: "http://another-url.com")!)
-                
+        
         let items = [item1.model, item2.model]
         expect(sut, toCompletWith: .success(items)) {
             let json = makeItemJSON([item1.json, item2.json])
@@ -125,9 +125,9 @@ class RemoteFeedLoaderTest: XCTestCase {
     
     private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
         let item = FeedItem(id: id,
-                             description: description,
-                             location: location,
-                             imageURL: imageURL)
+                            description: description,
+                            location: location,
+                            imageURL: imageURL)
         
         let json = [
             "id": id.uuidString,
@@ -144,14 +144,24 @@ class RemoteFeedLoaderTest: XCTestCase {
         return try! JSONSerialization.data(withJSONObject: json)
     }
     
-    private func expect(_ sut: RemoteFeedLoader, toCompletWith result: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: RemoteFeedLoader, toCompletWith expectedResult: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
         
-        var capturedResults = [RemoteFeedLoader.Result]()
-        sut.load { capturedResults.append($0) }
+        sut.load { recivedResult in
+            switch (recivedResult, expectedResult) {
+            case let (.success(recivedItem), .success(expectedItem)):
+                XCTAssertEqual(recivedItem, expectedItem, file: file, line: line)
+            case let (.failure(recivedError), .failure(expectedError)):
+                XCTAssertEqual(recivedError, expectedError, file: file, line: line)
+            default:
+                XCTFail("Expected result \(expectedResult), got \(recivedResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
         
         action()
         
-        XCTAssertEqual(capturedResults, [result], file: file, line: line)
+        wait(for: [exp], timeout: 1.0)
     }
     
     private class HTTPClientSpy: HTTPClient {
