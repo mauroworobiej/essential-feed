@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F43462426D2013A004F52E6 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43462326D2013A004F52E6 /* RemoteFeedLoader.swift */; };
+		8F7FA7E826DBEE1E0083FD3D /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FA7E726DBEE1E0083FD3D /* URLSessionHTTPClientTests.swift */; };
 		8F9D1C0A26D1A5CB00DC4A1F /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D1C0926D1A5CA00DC4A1F /* FeedLoader.swift */; };
 		8F9E54AA26D7C03100BAD7BE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E54A926D7C03100BAD7BE /* HTTPClient.swift */; };
 		8F9E54AC26D7C0E800BAD7BE /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E54AB26D7C0E800BAD7BE /* FeedItemsMapper.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		8F43462326D2013A004F52E6 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		8F7FA7E726DBEE1E0083FD3D /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		8F9D1C0926D1A5CA00DC4A1F /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		8F9E54A926D7C03100BAD7BE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		8F9E54AB26D7C0E800BAD7BE /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		8F9E54AD26D7CD5C00BAD7BE /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				8F7FA7E726DBEE1E0083FD3D /* URLSessionHTTPClientTests.swift */,
 				8FA1B2C826D1774500CA8215 /* EssentialFeedTests.swift */,
 			);
 			path = "Feed API";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA1B2C926D1774500CA8215 /* EssentialFeedTests.swift in Sources */,
+				8F7FA7E826DBEE1E0083FD3D /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
