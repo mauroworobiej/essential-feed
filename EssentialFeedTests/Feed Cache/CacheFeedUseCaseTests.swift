@@ -17,7 +17,7 @@ class LocalFeedLoader {
     
     func save(_ items: [FeedItem]) {
         store.deleteCacheFeed { [unowned self] error in
-            if error != nil {
+            if error == nil {
                 self.store.insert(items)
             }
         }
