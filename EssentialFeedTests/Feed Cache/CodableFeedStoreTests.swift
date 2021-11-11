@@ -8,8 +8,8 @@
 import XCTest
 import EssentialFeed
 
-class CodableFeedStoreTests: XCTestCase {
-    
+class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
+
     override func setUp() {
         setupEmptyStoreState()
     }
@@ -23,7 +23,7 @@ class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .empty)
     }
     
-    func test_retrieve_hasNoSideEffectOnEMptyCache() {
+    func test_retrieve_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
         expect(sut, toRetrieveTwice: .empty)
     }
@@ -133,7 +133,7 @@ class CodableFeedStoreTests: XCTestCase {
     func test_delete_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
         
-        deleteCache(from: sut)
+        let _ = deleteCache(from: sut)
         
         expect(sut, toRetrieve: .empty)
     }
@@ -151,7 +151,7 @@ class CodableFeedStoreTests: XCTestCase {
         let sut = makeSUT()
         insert((uniqueImageFeed().local, Date()), to: sut)
         
-        deleteCache(from: sut)
+        let _ = deleteCache(from: sut)
         
         expect(sut, toRetrieve: .empty)
     }
@@ -169,7 +169,7 @@ class CodableFeedStoreTests: XCTestCase {
         let noDeletePermissionURL = musicDirectory()
         let sut = makeSUT(storeURL: noDeletePermissionURL)
         
-        deleteCache(from: sut)
+        let _ = deleteCache(from: sut)
         
         expect(sut, toRetrieve: .empty)
     }
