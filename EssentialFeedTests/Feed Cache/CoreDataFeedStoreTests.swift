@@ -8,19 +8,6 @@
 import XCTest
 import EssentialFeed
 
-private class ManagedCache: NSManagedObject {
-    @NSManaged var timestamp: Date
-    @NSManaged var feed: NSOrderedSet
-}
-
-private class ManagedFeedImage: NSManagedObject {
-    @NSManaged var id: UUID
-    @NSManaged var imageDescription: String?
-    @NSManaged var location: String?
-    @NSManaged var url: URL
-    @NSManaged var cache: ManagedCache
-}
-
 class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
@@ -36,7 +23,9 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
+        let sut = makeSUT()
         
+        assertThatRetrieveDeliversFoundValuesOnNonEmptyCache(on: sut)
     }
     
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
@@ -80,7 +69,7 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> FeedStore {
         let storeBundle = Bundle(for: CoreDataFeedStore.self)
         let storeUrl = URL(fileURLWithPath: "/dev/null")
-        let sut = try! CoreDataFeedStore(storeUrl: storeUrl, bundle: storeBundle)
+        let sut = try! CoreDataFeedStore(storeURL: storeUrl, bundle: storeBundle)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
