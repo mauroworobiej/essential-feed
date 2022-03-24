@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DFA0AD527ED08D000072BBF /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFA0AD427ED08D000072BBF /* CoreDataHelpers.swift */; };
 		8F072D0F2704ADF2001F740F /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F072D0E2704ADF2001F740F /* FeedCachePolicy.swift */; };
 		8F124C0D26EEA424003DDD85 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F124C0C26EEA424003DDD85 /* CacheFeedUseCaseTests.swift */; };
 		8F31366426FB5BAF007D82F1 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F31366326FB5BAF007D82F1 /* LoadFeedFromCacheUseCaseTests.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7DFA0AD427ED08D000072BBF /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		8F072D0E2704ADF2001F740F /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 		8F124C0C26EEA424003DDD85 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		8F31366326FB5BAF007D82F1 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				8F49560E27A42E4900C87BFD /* FeedStore.xcdatamodeld */,
 				8F345F0527A96AFF006A2522 /* CoreDataFeedStore.swift */,
+				7DFA0AD427ED08D000072BBF /* CoreDataHelpers.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DFA0AD527ED08D000072BBF /* CoreDataHelpers.swift in Sources */,
 				8F49561027A42E4900C87BFD /* FeedStore.xcdatamodeld in Sources */,
 				8F9E54AC26D7C0E800BAD7BE /* FeedItemsMapper.swift in Sources */,
 				8F9D1C0A26D1A5CB00DC4A1F /* FeedLoader.swift in Sources */,
