@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CodableFeedStore: FeedStore {
+public final class CodableFeedStore: FeedStore {
     
     private struct Cache: Codable {
         let feed: [CodableFeedImage]
@@ -45,7 +45,7 @@ public class CodableFeedStore: FeedStore {
         self.storeURL = storeURL
     }
     
-    public func retrieve(completion: @escaping RetrivalCompletion) {
+    public func retrieve(completion: @escaping RetrievalCompletion) {
         let storeURL = self.storeURL
         queue.async {
             guard let data = try? Data(contentsOf: storeURL) else {
