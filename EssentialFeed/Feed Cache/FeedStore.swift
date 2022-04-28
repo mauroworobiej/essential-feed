@@ -7,16 +7,13 @@
 
 import Foundation
 
-public enum CacheFeed {
-    case empty
-    case found(feed: [LocalFeedImage], timestamp: Date)
-}
+public typealias CacheFeed = (feed: [LocalFeedImage], timestamp: Date)
 
 public protocol FeedStore {
     typealias DeletionCompletion = (Error?) -> Void
     typealias InsertionCompletion = (Error?) -> Void
     
-    typealias RetrieveResult = Result<CacheFeed, Error>
+    typealias RetrieveResult = Result<CacheFeed?, Error>
     typealias RetrievalCompletion = (RetrieveResult) -> Void
     
     /// The completion handler can be invoke in any thread.
