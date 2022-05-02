@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FeedViewController.swift
 //  Prototype
 //
 //  Created by Mauro Worobiej on 01/05/2022.
@@ -152,7 +152,7 @@ extension FeedCell {
     }
 }
 
-class ViewController: UIViewController {
+class FeedViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
 
 // MARK: - TableView DataSource
 
-extension ViewController: UITableViewDataSource {
+extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -191,7 +191,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 
-extension ViewController {
+extension FeedViewController {
     private func setupView() {
         setupAdditionalConfigs()
         setupViewHierarchy()
