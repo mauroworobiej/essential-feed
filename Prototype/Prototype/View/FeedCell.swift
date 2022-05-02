@@ -1,17 +1,11 @@
 //
-//  FeedViewController.swift
+//  FeedCell.swift
 //  Prototype
 //
-//  Created by Mauro Worobiej on 01/05/2022.
+//  Created by Mauro Worobiej on 02/05/2022.
 //
 
 import UIKit
-
-extension UIView {
-    func addSubviews(_ views: UIView...) {
-        views.forEach {addSubview($0)}
-    }
-}
 
 class FeedCell: UITableViewCell {
     static let identifier = "feedCell"
@@ -105,6 +99,8 @@ class FeedCell: UITableViewCell {
     
 }
 
+// MARK: - Setup FeedCell View
+
 extension FeedCell {
     private func setupView() {
         setupAdditionalConfigs()
@@ -143,76 +139,6 @@ extension FeedCell {
             feedImageView.leadingAnchor.constraint(equalTo: feedImageContainer.leadingAnchor),
             feedImageView.trailingAnchor.constraint(equalTo: feedImageContainer.trailingAnchor),
             feedImageView.bottomAnchor.constraint(equalTo: feedImageContainer.bottomAnchor),
-            
-            
-            
-            
-            
-        ])
-    }
-}
-
-class FeedViewController: UIViewController {
-    
-    private lazy var tableView: UITableView = {
-        let table = UITableView()
-        let footerAndHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: table.frame.width, height: 16))
-        table.tableHeaderView = footerAndHeaderView
-        table.tableFooterView = footerAndHeaderView
-        table.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
-        table.dataSource = self
-        table.separatorStyle = .none
-        table.translatesAutoresizingMaskIntoConstraints = false
-        return table
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-    }
-}
-
-// MARK: - TableView DataSource
-
-extension FeedViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier) as? FeedCell else {
-            return UITableViewCell()
-        }
-        cell.configure()
-        return cell
-    }
-}
-
-
-extension FeedViewController {
-    private func setupView() {
-        setupAdditionalConfigs()
-        setupViewHierarchy()
-        setupConstraints()
-    }
-    
-    private func setupAdditionalConfigs() {
-        view.backgroundColor = .white
-        title = "My Feed"
-    }
-    
-    private func setupViewHierarchy() {
-        view.addSubviews(tableView)
-    }
-    
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 }
