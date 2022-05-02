@@ -91,6 +91,10 @@ class FeedCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        feedImageView.alpha = 0
+    }
     
     func configure(with model: FeedImageViewModel) {
         locationLabel.text = model.location
@@ -99,9 +103,20 @@ class FeedCell: UITableViewCell {
         descriptionLabel.text = model.description
         descriptionLabel.isHidden = model.description == nil
         
-        feedImageView.image = UIImage(named: model.imageName)
+        fadeIn(UIImage(named: model.imageName))
     }
     
+    private func fadeIn(_ image: UIImage?) {
+        feedImageView.image = image
+        
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.3,
+            options: [],
+            animations: {
+                self.feedImageView.alpha = 1
+            })
+    }
 }
 
 // MARK: - Setup FeedCell View
@@ -116,6 +131,7 @@ extension FeedCell {
     private func setupAdditionalConfigs() {
         backgroundColor = .white
         selectionStyle = .none
+        feedImageView.alpha = 0
     }
     
     private func setupViewHierarchy() {
