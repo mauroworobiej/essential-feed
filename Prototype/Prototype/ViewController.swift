@@ -156,6 +156,9 @@ class ViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
+        let footerAndHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: table.frame.width, height: 16))
+        table.tableHeaderView = footerAndHeaderView
+        table.tableFooterView = footerAndHeaderView
         table.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
         table.dataSource = self
         table.separatorStyle = .none
@@ -197,6 +200,7 @@ extension ViewController {
     
     private func setupAdditionalConfigs() {
         view.backgroundColor = .white
+        title = "My Feed"
     }
     
     private func setupViewHierarchy() {
