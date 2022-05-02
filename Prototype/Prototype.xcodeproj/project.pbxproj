@@ -62,7 +62,7 @@
 			children = (
 				7D01E267281F2D0C0009F4E8 /* AppDelegate.swift */,
 				7D01E269281F2D0C0009F4E8 /* SceneDelegate.swift */,
-				7DEA7EF32820054A0019E524 /* FeedImageViewModel.swift */,
+				7DEA7EF5282007480019E524 /* Model */,
 				7DEA7EF2282005390019E524 /* Helpers */,
 				7DEA7EEB2820040D0019E524 /* View */,
 				7D01E270281F2D0D0009F4E8 /* Assets.xcassets */,
@@ -87,6 +87,14 @@
 				7DEA7EF02820046D0019E524 /* UIView+Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7DEA7EF5282007480019E524 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7DEA7EF32820054A0019E524 /* FeedImageViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

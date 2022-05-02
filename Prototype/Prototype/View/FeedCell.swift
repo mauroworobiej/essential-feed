@@ -11,7 +11,7 @@ class FeedCell: UITableViewCell {
     static let identifier = "feedCell"
     
     private lazy var locationImageView: UIImageView = {
-        let img = UIImageView(image: UIImage(systemName: "mappin.and.ellipse"))
+        let img = UIImageView(image: UIImage(named: "pin"))
         img.tintColor = .lightGray
         img.translatesAutoresizingMaskIntoConstraints = false
         return img
@@ -26,7 +26,6 @@ class FeedCell: UITableViewCell {
     
     private lazy var locationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Location\nLocation"
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 15)
         label.textColor = .lightGray
@@ -40,13 +39,13 @@ class FeedCell: UITableViewCell {
             locationLabel
         ])
         container.alignment = .top
-        container.spacing = 26
+        container.spacing = 6
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
     
     private lazy var feedImageView: UIImageView = {
-        let img = UIImageView(image: UIImage(systemName: "camera"))
+        let img = UIImageView()
         img.tintColor = .lightGray
         img.translatesAutoresizingMaskIntoConstraints = false
         return img
@@ -64,7 +63,6 @@ class FeedCell: UITableViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus, nulla ut commodo consequat, risus neque consectetur erat, ac efficitur tortor diam in libero. Pellentesque suscipit porttitor venenatis. Nullam bibendum tellus a felis facilisis, vel luctus neque maxim"
         label.textColor = .black.withAlphaComponent(0.7)
         label.font = .systemFont(ofSize: 16)
         label.numberOfLines = 6
@@ -86,6 +84,7 @@ class FeedCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -93,8 +92,14 @@ class FeedCell: UITableViewCell {
     }
     
     
-    func configure() {
-        setupView()
+    func configure(with model: FeedImageViewModel) {
+        locationLabel.text = model.location
+        locationContainer.isHidden = model.location == nil
+        
+        descriptionLabel.text = model.description
+        descriptionLabel.isHidden = model.description == nil
+        
+        feedImageView.image = UIImage(named: model.imageName)
     }
     
 }
@@ -124,11 +129,11 @@ extension FeedCell {
             cellContainer.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             cellContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
 
-            locationImageContainer.widthAnchor.constraint(equalToConstant: 2),
+            locationImageContainer.widthAnchor.constraint(equalToConstant: 10),
 
             locationImageView.topAnchor.constraint(equalTo: locationImageContainer.topAnchor, constant: 3),
             locationImageView.leadingAnchor.constraint(equalTo: locationImageContainer.leadingAnchor),
-            locationImageView.heightAnchor.constraint(equalToConstant: 20),
+            locationImageView.heightAnchor.constraint(equalToConstant: 14),
             
             locationContainer.widthAnchor.constraint(equalTo: cellContainer.widthAnchor),
             

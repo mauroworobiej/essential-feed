@@ -8,6 +8,7 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+    private let feed = FeedImageViewModel.prototypeFeed
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -60,7 +61,7 @@ extension FeedViewController {
 extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return feed.count
     }
     
     
@@ -68,7 +69,8 @@ extension FeedViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier) as? FeedCell else {
             return UITableViewCell()
         }
-        cell.configure()
+        let model = feed[indexPath.row]
+        cell.configure(with: model)
         return cell
     }
 }
